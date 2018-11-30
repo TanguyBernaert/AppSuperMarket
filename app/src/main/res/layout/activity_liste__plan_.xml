@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:screenOrientation="landscape"
+    android:orientation="horizontal"
+    tools:context=".Liste_Plan_Activity">
+
+    <TextView
+        android:layout_width="400dp"
+        android:layout_height="50dp"
+        android:text="Votre liste de course"
+        android:textAllCaps="true"
+        android:textSize="25dp"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/titre"/>
+
+    <TextView
+        android:layout_width="400dp"
+        android:layout_height="650dp"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/titre"/>
+
+    <ImageView
+        android:layout_width="580dp"
+        android:layout_height="700dp"
+        android:layout_alignParentStart="true"
+        android:src="@drawable/plan_magasin"
+        android:id="@+id/plan"/>
+</RelativeLayout>
