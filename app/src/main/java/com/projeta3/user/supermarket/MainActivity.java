@@ -39,11 +39,15 @@ public class MainActivity extends AppCompatActivity {
 
         textView = findViewById(R.id.texte_decode);
 
-
+        final Auchan auchan= new Auchan();
+        auchan.produit = "azerty";
+        auchan.id = 0;
+        auchan.rayon = "aze";
         scan_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                new DBManager(MainActivity.this).execute();
+                new ProductSectionGetter(auchan).execute();
+
                 /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     requestPermissions(new String[]{Manifest.permission.CAMERA},
                             MY_CAMERA_REQUEST_CODE);
