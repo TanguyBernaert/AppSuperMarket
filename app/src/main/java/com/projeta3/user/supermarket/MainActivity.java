@@ -2,34 +2,34 @@ package com.projeta3.user.supermarket;
 
 
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.os.Build;
-import android.support.annotation.NonNull;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-// Test mise a jour github
-
-
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
+
+// Test mise a jour github
 public class MainActivity extends AppCompatActivity {
 
     private Button scan_btn;
+    private DatabaseReference mDatabase;
     private String text_scanned;
     private TextView textView;
     private static final int MY_CAMERA_REQUEST_CODE = 100;
     final Activity activity = this;
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +43,15 @@ public class MainActivity extends AppCompatActivity {
         scan_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                new DBManager(MainActivity.this).execute();
+                /*if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
                     requestPermissions(new String[]{Manifest.permission.CAMERA},
                             MY_CAMERA_REQUEST_CODE);
                 } else {
                     scanQrCode(activity);
-                }
+                }*/
+                //Test test = new Test("glagla", "surgelé");
+                //mDatabase.child("Test").child("coucou").setValue(test);
             }
         });
     }
@@ -107,5 +110,20 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }}//end onRequestPermissionsResult
+    private class Test {
+
+        public String produit;
+        public String rayon;
+
+        public Test() {
+            // Default constructor required for calls to DataSnapshot.getValue(User.class)
+        }
+
+        public Test(String produit, String rayon) {
+            this.produit = produit;
+            this.rayon = rayon;
+        }
+
+    }
 }
 
